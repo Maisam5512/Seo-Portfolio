@@ -85,7 +85,7 @@
 
 
 import { SKILLS } from '@/Components/constants/skillsData';
-import dynamic from 'next/dynamic';
+import * as Icons from '@heroicons/react/24/outline';
 
 const SkillCard = ({ 
   title, 
@@ -100,9 +100,11 @@ const SkillCard = ({
   color?: string;
   isTools?: boolean;
 }) => {
-  const IconComponent = dynamic(() =>
-    import('@heroicons/react/24/outline').then((mod) => mod[icon as keyof typeof mod])
-  );
+  // const IconComponent = dynamic(() =>
+  //   import('@heroicons/react/24/outline').then((mod) => mod[icon as keyof typeof mod])
+  // );
+
+  const IconComponent = Icons[icon as keyof typeof Icons];
 
   const colorClasses = {
     blue: 'text-blue-600',
